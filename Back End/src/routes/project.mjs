@@ -1,4 +1,3 @@
-import { db } from "../index.mjs";
 import { authenticateJWT } from "../utils/authentication.mjs";
 import { createProject, deleteProject, getProject, getProjects, patchProject } from "../utils/projectQueries.mjs";
 import { Router } from "express";

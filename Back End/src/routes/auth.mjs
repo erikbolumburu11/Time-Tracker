@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { GetUserByID, GetUserFromUsername, RegisterUser } from "../utils/userQueries.mjs";
+import { GetUserFromUsername, RegisterUser } from "../utils/userQueries.mjs";
 import jwt from 'jsonwebtoken';
 import { authenticateJWT, comparePassword } from "../utils/authentication.mjs";
 
