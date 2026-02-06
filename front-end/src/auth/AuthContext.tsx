@@ -32,7 +32,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
+
   useEffect(() => {
+    if (user) return; // user already set, no need to fetch
+
     async function loadUser() {
       try {
         const res = await api.get<User>("/auth/userdata");
@@ -45,7 +48,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     }
 
     loadUser();
-  }, []);
+  }, [user]);
 
   async function login(username: string, password: string) {
     const res = await api.post<{ token: string; user: User }>(

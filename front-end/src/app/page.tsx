@@ -2,24 +2,18 @@
 
 import { useAuth } from "@/auth/AuthContext";
 import Login from "@/components/Login";
+import { redirect } from "next/navigation";
 
 export default function Home() {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
 
-  if (loading) return <p>Loading...</p>; // wait until user state is ready
+  if (loading) return <p>Loading...</p>; 
+  if (user) redirect('/dashboard')
 
   return (
     <div className="">
-      {user ? (
-        <>
-          <span>Welcome, {user.username}!</span>
-        </>
-      ) : (
-        <>
-          <h1 className="text-4xl">Login</h1>
-          <Login/>
-        </>
-      )}
+      <h1 className="text-4xl">Login</h1>
+      <Login/>
     </div>
   );
 }
