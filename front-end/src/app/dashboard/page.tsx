@@ -4,6 +4,7 @@ import { useAuth } from "@/auth/AuthContext";
 import ActiveTimeEntry from "@/components/ActiveTimeEntry";
 import TimeEntryHistory from "@/components/TimeEntryHistory";
 import TimerButton from "@/components/TimerButton";
+import { Button } from "@/components/ui/button";
 import { redirect } from "next/navigation";
 
 export default function Dashboard() {
@@ -17,12 +18,14 @@ export default function Dashboard() {
         <div className="welcome">
             <div>
             <span>Welcome, {user.username}!</span>
-            <button onClick={logout}>Log out</button>
+            <Button size="xs" className="m-2 p-2" onClick={logout}>Log out</Button>
             </div>
         </div>
-        <div className="timer">
+        <div className="flex items-center justify-center">
             <TimerButton/>
-            <ActiveTimeEntry/>
+        </div>
+        <div>
+            <h1 className="text-4xl font-semibold">History</h1>
             <TimeEntryHistory/>
         </div>
     </div>
