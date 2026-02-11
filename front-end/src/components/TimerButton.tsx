@@ -2,7 +2,7 @@ import { useActiveTimeEntry } from "@/activeTimeEntry/ActiveTimeEntryContext";
 import { Button } from "@/components/ui/button"
 import api from "@/api/axios";
 
-export default function TimerButton(){
+export default function TimerButton({project} : {project: Project | null}){
     const { activeTimeEntry, setActiveTimeEntry, getElapsedTime } = useActiveTimeEntry();
 
     function GetButtonLabel(){
@@ -42,7 +42,7 @@ export default function TimerButton(){
     async function StartTimer(){
         const res = await api.post<TimeEntry>(
             "/timeEntry/start",
-            { project_id: 1 }
+            { project_id: project?.id }
         );
         setActiveTimeEntry(res.data);
     }

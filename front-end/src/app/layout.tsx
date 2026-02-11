@@ -5,6 +5,7 @@ import { AuthProvider } from "@/auth/AuthContext";
 import { ActiveTimeEntryProvider } from "@/activeTimeEntry/ActiveTimeEntryContext";
 import { ThemeProvider  } from "@/theme/ThemeProvider";
 import ThemeToggle from "@/components/ThemeToggle";
+import { ProjectsProvider } from "@/project/ProjectContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,9 +39,11 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AuthProvider>
-            <ActiveTimeEntryProvider>
-              {children}
-            </ActiveTimeEntryProvider>
+            <ProjectsProvider>
+              <ActiveTimeEntryProvider>
+                {children}
+              </ActiveTimeEntryProvider>
+            </ProjectsProvider>
           </AuthProvider>
           <div className="fixed bottom-4 right-4">
             <ThemeToggle/>
