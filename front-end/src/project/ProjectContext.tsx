@@ -15,7 +15,6 @@ export function ProjectsProvider({ children }: { children: React.ReactNode }) {
       try {
         const res = await api.get<Project[]>("/project");
         setProjects(res.data);
-        console.log(res.data);
       } catch {
         setProjects([]);
       }

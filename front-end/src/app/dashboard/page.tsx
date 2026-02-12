@@ -26,28 +26,32 @@ export default function Dashboard() {
   if(!user) redirect('/')
 
   return (
-    <div className="mx-3">
+    <div className="mx-3 bg-accent">
         <div className="">
             <span>Welcome, {user.username}!</span>
             <Button size="xs" className="m-2 p-2" onClick={logout}>Log out</Button>
         </div>
         <div className="flex flex-col items-center justify-center">
-          <div className="m-2">
-            <ProjectSelect
-              selectedProject={selectedProject}
-              projects={projects}
-              onChange={setSelectedProject}
-            />
-          </div>
-          <div className="m-2">
-            <TimerButton project={selectedProject}/>
-          </div>
+          <Card className="m-10 p-5">
+              <CardContent>
+                <div className="m-2">
+                  <ProjectSelect
+                    selectedProject={selectedProject}
+                    projects={projects}
+                    onChange={setSelectedProject}
+                  />
+                </div>
+                <div className="mt-2 mb-4">
+                  <TimerButton project={selectedProject}/>
+                </div>
+              </CardContent>
+          </Card>
         </div>
         <div>
-          <Card className="bg-accent">
+          <Card className="m-5 p-5">
             <Tabs defaultValue="history">
-              <CardHeader className="flex justify-center">
-                <TabsList>
+              <CardHeader className="flex justify-center m-5">
+                <TabsList className="bg-background">
                   <TabsTrigger value="history" className="text-4xl text-primary px-4 py-8 m-2">History</TabsTrigger>
                   <TabsTrigger value="reports" className="text-4xl text-primary px-4 py-8 m-2">Reports</TabsTrigger>
                 </TabsList>
