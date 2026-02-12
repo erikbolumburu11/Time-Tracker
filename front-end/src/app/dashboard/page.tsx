@@ -5,6 +5,8 @@ import ProjectSelect from "@/components/ProjectSelect";
 import TimeEntryHistory from "@/components/TimeEntryHistory";
 import TimerButton from "@/components/TimerButton";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useProjects } from "@/project/ProjectContext";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -42,8 +44,23 @@ export default function Dashboard() {
           </div>
         </div>
         <div>
-            <h1 className="text-4xl font-semibold">History</h1>
-            <TimeEntryHistory/>
+          <Card className="bg-accent">
+            <Tabs defaultValue="history">
+              <CardHeader className="flex justify-center">
+                <TabsList>
+                  <TabsTrigger value="history" className="text-4xl text-primary px-4 py-8 m-2">History</TabsTrigger>
+                  <TabsTrigger value="reports" className="text-4xl text-primary px-4 py-8 m-2">Reports</TabsTrigger>
+                </TabsList>
+              </CardHeader>
+              <CardContent>
+                <TabsContent value="history">
+                  <TimeEntryHistory/>
+                </TabsContent>
+                <TabsContent value="reports">
+                </TabsContent>
+              </CardContent>
+            </Tabs>
+          </Card>
         </div>
     </div>
   );
